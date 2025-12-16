@@ -11,11 +11,8 @@ export default function Home() {
           <div className="flex items-center gap-6">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="flex gap-1">
-                <div className="w-3 h-6 bg-white transform -skew-x-12"></div>
-                <div className="w-3 h-6 bg-white transform -skew-x-12"></div>
-              </div>
-              <span className="text-xl font-semibold">morningside</span>
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/social%20media_x%20dp-nK2WlzOxXhQyXpdegDtmZZPiPZ3sfW.png" alt="Morningside AI Logo" className="h-6 w-auto" />
+              <span className="font-normal text-sm">Moonlight.AI Solutions</span>
             </div>
 
             {/* Social Media Icons */}
@@ -52,7 +49,7 @@ export default function Home() {
                 className="text-slate-400 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
-                <Instagram className="w-5 h-5" />
+                
               </a>
 
               {/* LinkedIn */}
@@ -107,9 +104,7 @@ export default function Home() {
             {/* Body Text */}
             <div className="space-y-4 text-slate-50/90 leading-relaxed">
               <p>
-                At Morningside AI, we believe the conversation around artificial intelligence has been dominated by
-                hype, fear, and empty promises. Too many businesses have been left with pretty slides and failed
-                prototypes, but no real progress.
+                At Moonlight.AI Solutions, we believe the conversation around artificial intelligence has been dominated by hype, fear, and empty promises. Too many businesses have been left with pretty slides and failed prototypes, but no real progress.
               </p>
 
               <p>
@@ -136,9 +131,7 @@ export default function Home() {
               <p>We call this becoming AI-first. Not just aware of the technology, but built on top of it.</p>
 
               <p>
-                That's why Morningside AI exists: to help forward-thinking businesses turn AI from an abstract idea into
-                a real competitive advantage. We don't just implement AI. We build AI operating systems for the next
-                decade of growth.
+                That&apos;s why Moonlight.AI Solutions exists: to help forward-thinking businesses turn AI from an abstract idea into a real competitive advantage. We don&apos;t just implement AI. We build AI operating systems for the next decade of growth.
               </p>
 
               <p>
