@@ -1,8 +1,22 @@
 "use client"
 
-import { ArrowRight, Facebook, Instagram, Linkedin } from "lucide-react"
+import { ArrowRight, Facebook, Instagram, Linkedin, X } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export default function Home() {
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.src = "https://lxghugze.formester.com/widget/standard.js"
+    script.type = "module"
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-950 to-slate-950 text-white">
       {/* Navigation */}
@@ -11,7 +25,7 @@ export default function Home() {
           <div className="flex items-center gap-6">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/social%20media_x%20dp-nK2WlzOxXhQyXpdegDtmZZPiPZ3sfW.png" alt="Morningside AI Logo" className="h-6 w-auto" />
+              <img src="/images/social-20media-x-20dp.png" alt="Morningside AI Logo" className="h-6 w-auto" />
               <span className="font-normal text-sm">Moonlight.AI Solutions</span>
             </div>
 
@@ -49,7 +63,7 @@ export default function Home() {
                 className="text-slate-400 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
-                
+                <Instagram className="w-5 h-5" />
               </a>
 
               {/* LinkedIn */}
@@ -66,7 +80,10 @@ export default function Home() {
           </div>
 
           {/* CTA Button */}
-          <button className="flex items-center gap-2 px-6 py-2.5 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors">
+          <button
+            onClick={() => setIsFormOpen(true)}
+            className="flex items-center gap-2 px-6 py-2.5 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors"
+          >
             Get in touch
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -104,7 +121,9 @@ export default function Home() {
             {/* Body Text */}
             <div className="space-y-4 text-slate-50/90 leading-relaxed">
               <p>
-                At Moonlight.AI Solutions, we believe the conversation around artificial intelligence has been dominated by hype, fear, and empty promises. Too many businesses have been left with pretty slides and failed prototypes, but no real progress.
+                At Moonlight.AI Solutions, we believe the conversation around artificial intelligence has been dominated
+                by hype, fear, and empty promises. Too many businesses have been left with pretty slides and failed
+                prototypes, but no real progress.
               </p>
 
               <p>
@@ -131,7 +150,9 @@ export default function Home() {
               <p>We call this becoming AI-first. Not just aware of the technology, but built on top of it.</p>
 
               <p>
-                That&apos;s why Moonlight.AI Solutions exists: to help forward-thinking businesses turn AI from an abstract idea into a real competitive advantage. We don&apos;t just implement AI. We build AI operating systems for the next decade of growth.
+                That&apos;s why Moonlight.AI Solutions exists: to help forward-thinking businesses turn AI from an
+                abstract idea into a real competitive advantage. We don&apos;t just implement AI. We build AI operating
+                systems for the next decade of growth.
               </p>
 
               <p>
@@ -142,7 +163,10 @@ export default function Home() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <button className="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors">
+              <button
+                onClick={() => setIsFormOpen(true)}
+                className="flex items-center gap-2 px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors"
+              >
                 Get in touch
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -150,6 +174,41 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {isFormOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setIsFormOpen(false)}
+        >
+          <div
+            className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-slate-200">
+              <h3 className="text-2xl font-bold text-slate-900">Get in Touch</h3>
+              <button
+                onClick={() => setIsFormOpen(false)}
+                className="text-slate-400 hover:text-slate-600 transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Modal Body with Formester Form */}
+            <div className="p-6 overflow-y-auto max-h-[calc(90vh-88px)]">
+              <formester-standard-form
+                set-auto-height="true"
+                height="100%"
+                width="100%"
+                id="g3mOdkVNS"
+                url="https://lxghugze.formester.com/f/g3mOdkVNS"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
