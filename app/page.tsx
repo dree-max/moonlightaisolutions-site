@@ -54,18 +54,7 @@ export default function Home() {
               >
                 <Facebook className="w-5 h-5" />
               </a>
-
-              {/* Instagram */}
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-
+              
               {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/company/moonlight-aisolutions"
