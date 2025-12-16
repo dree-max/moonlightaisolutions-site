@@ -1,11 +1,11 @@
-/* Updated design tokens for Morningside AI dark theme */
+/* Updated design tokens for MoonlightAI Soluions dark theme */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Dark background and light foreground for Morningside theme */
+  /* Dark background and light foreground for MoonlightAI Soluions theme */
   --background: hsl(0 0% 100%);
   --foreground: hsl(222.2 84% 4.9%);
   --card: hsl(0 0% 100%);
