@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Facebook, Instagram, Linkedin, X } from "lucide-react"
+import { ArrowRight, Facebook, Linkedin, X } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
           <div className="flex items-center gap-6">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <img src="/images/social-20media-x-20dp.png" alt="Morningside AI Logo" className="h-6 w-auto" />
+              <img src="/images/social-20media-x-20dp.png" alt="MoonlightAI Solutions Logo" className="h-6 w-auto" />
               <span className="font-normal text-sm">Moonlight.AI Solutions</span>
             </div>
 
@@ -54,7 +54,7 @@ export default function Home() {
               >
                 <Facebook className="w-5 h-5" />
               </a>
-              
+
               {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/company/moonlight-aisolutions"
