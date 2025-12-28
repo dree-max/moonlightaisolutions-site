@@ -26,7 +26,7 @@ export default function Home() {
             {/* Logo */}
             <div className="flex items-center gap-2">
               <img src="/images/social-20media-x-20dp.png" alt="MoonlightAI Solutions Logo" className="h-6 w-auto" />
-              <span className="font-normal text-sm">Moonlight.AI Solutions</span>
+              <span className="font-normal text-sm">MoonlightAI Solutions</span>
             </div>
 
             {/* Social Media Icons */}
@@ -110,7 +110,7 @@ export default function Home() {
             {/* Body Text */}
             <div className="space-y-4 text-slate-50/90 leading-relaxed">
               <p>
-                At Moonlight.AI Solutions, we believe the conversation around artificial intelligence has been dominated
+                At MoonlightAI Solutions, we believe the conversation around artificial intelligence has been dominated
                 by hype, fear, and empty promises. Too many businesses have been left with pretty slides and failed
                 prototypes, but no real progress.
               </p>
