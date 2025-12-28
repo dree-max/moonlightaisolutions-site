@@ -33,7 +33,7 @@ export default function Home() {
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-slate-700">
               {/* X (Twitter) */}
               <a
-                href="https://x.com"
+                href="https://x.com/moonlightaisol"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
