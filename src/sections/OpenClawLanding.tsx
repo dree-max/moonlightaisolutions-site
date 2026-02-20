@@ -2,7 +2,7 @@ import { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Terminal, Zap, MessageSquare, Bot, Globe, Check, ExternalLink, Copy, Play } from 'lucide-react';
+import { ArrowRight, Terminal, MessageSquare, Bot, Globe, ExternalLink, Play } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +58,7 @@ const OpenClawLanding = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
   const [lines, setLines] = useState<TerminalLine[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying] = useState(true);
 
   // Terminal animation
   useEffect(() => {

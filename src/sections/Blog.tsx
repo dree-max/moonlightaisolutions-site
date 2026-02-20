@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Calendar, Clock, User, X, BookOpen, FileText, Layers } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, User, BookOpen, FileText, Layers } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
