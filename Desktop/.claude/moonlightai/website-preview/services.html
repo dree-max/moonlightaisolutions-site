@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | MoonlightAI Solutions AI Automation Systems</title>
+    <meta name="description" content="Comprehensive AI automation systems for agencies, SaaS companies, and professional services. Lead generation, project management, hiring, and sales administration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-medium: #111111;
+            --black-soft: #1a1a1a;
+            --green-primary: #10b981;
+            --green-bright: #34d399;
+            --green-dark: #059669;
+            --green-glow: rgba(16, 185, 129, 0.12);
+            --green-subtle: rgba(16, 185, 129, 0.06);
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 48px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 64px;
+            }
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--green-primary);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 40px;
+            list-style: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: var(--green-primary);
+            color: var(--black);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s var(--transition-smooth);
+            box-shadow: 0 0 30px var(--green-glow);
+        }
+
+        .nav-cta:hover {
+            background: var(--green-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px var(--green-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 140px 0 100px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--green-primary) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--green-dark) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(60px, -60px) scale(1.15); }
+            66% { transform: translate(-40px, 40px) scale(0.9); }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1100px;
+            padding: 0 24px;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--green-primary);
+            line-height: 1;
+            margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 28px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-300) 50%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.15rem, 2vw, 1.4rem);
+            color: var(--gray-400);
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--green-primary);
+            color: var(--black);
+            padding: 18px 36px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s var(--transition-smooth);
+            box-shadow: 0 0 40px var(--green-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--green-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px var(--green-glow);
+        }
+
+        .btn-primary svg {
+            width: 22px;
+            height: 22px;
+            transition: transform 0.3s var(--transition-smooth);
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Section Styles */
+        .services-section {
+            padding: 120px 0;
+            background: var(--black-light);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--green-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section-tag::before,
+        .section-tag::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--green-primary));
+        }
+
+        .section-tag::after {
+            background: linear-gradient(90deg, var(--green-primary), transparent);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-400);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Service Detail Cards */
+        .services-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        @media (min-width: 768px) {
+            .services-detail-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-detail-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            transition: all 0.4s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top left, var(--green-glow) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-detail-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .service-detail-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-detail-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--green-subtle) 0%, transparent 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-detail-icon svg {
+            width: 26px;
+            height: 26px;
+            color: var(--green-primary);
+        }
+
+        .service-detail-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-detail-description {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Who It's For Section */
+        .who-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 640px) {
+            .who-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .who-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .who-card {
+            background: linear-gradient(145deg, var(--black-medium) 0%, var(--black) 100%);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.4s var(--transition-smooth);
+        }
+
+        .who-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .who-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .who-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .who-description {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, var(--black-medium) 0%, var(--black-soft) 100%);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--gray-300);
+            margin-bottom: 28px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-info p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .testimonial-stat {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.9rem;
+            color: var(--green-primary);
+            font-weight: 600;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .process-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .process-timeline {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .process-step {
+            position: relative;
+            text-align: center;
+        }
+
+        .process-number {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+            color: var(--black);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 24px;
+            box-shadow: 0 15px 40px var(--green-glow);
+        }
+
+        .process-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .process-description {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .process-detail {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, var(--black-medium) 0%, var(--black) 100%);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: var(--radius-lg);
+            padding: 48px 36px;
+            position: relative;
+            transition: all 0.4s var(--transition-smooth);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 60px var(--green-glow);
+        }
+
+        .pricing-card.popular::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--green-primary);
+            color: var(--black);
+            padding: 6px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+        }
+
+        .pricing-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--green-primary);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .pricing-period {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 36px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            color: var(--gray-300);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .pricing-features li::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--green-subtle);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2310b981'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 12px;
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            background: var(--green-primary);
+            color: var(--black);
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .pricing-cta:hover {
+            background: var(--green-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--green-glow);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 140px 0;
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+            opacity: 0.6;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        .cta-note {
+            margin-top: 24px;
+            font-size: 0.95rem;
+            color: var(--gray-500);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            background: var(--black-light);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .footer-logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: -0.03em;
+        }
+
+        .footer-logo span {
+            color: var(--green-primary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-copyright {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green-primary), var(--green-bright));
+            z-index: 9999;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        /* Custom Cursor Glow */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .cursor-glow {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">MoonlightAI Solutions</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="why.html">Why Us</a></li>
+                <li><a href="process.html">Process</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="https://calendly.com/idriwale-moonlightaisolutions/30min" class="nav-cta" target="_blank" rel="noopener">Book a Call</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-stats reveal">
+                <div class="hero-stat">
+                    <div class="hero-stat-value"><span class="counter" data-target="200">0</span>+</div>
+                    <div class="hero-stat-label">Systems Built</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value"><span class="counter" data-target="96">0</span>%</div>
+                    <div class="hero-stat-label">Client Retention</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">$<span class="counter" data-target="50">0</span>M+</div>
+                    <div class="hero-stat-label">Revenue Generated</div>
+                </div>
+            </div>
+
+            <h1 class="reveal reveal-delay-1">AI Systems That Actually Drive Revenue</h1>
+            <p class="hero-subtitle reveal reveal-delay-2">
+                Bespoke automation systems built for agencies, SaaS companies, and professional services. From lead generation to fulfillment, we architect AI-powered workflows that scale your business without scaling headcount.
+            </p>
+            <a href="https://calendly.com/idriwale-moonlightaisolutions/30min" class="btn-primary reveal reveal-delay-3" target="_blank" rel="noopener">
+                Book Your Strategy Call
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Intelligent Agent Teams -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Intelligent Agent Teams</span>
+                <h2 class="section-title">AI agents that work while you sleep</h2>
+                <p class="section-subtitle">Custom AI agents that handle repetitive tasks, answer questions, and automate workflows around the clock-so your team focuses on high-value work.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Customer Support Agents</h3>
+                    <p class="service-detail-description">AI-powered chatbots that understand context, handle complex queries, and escalate when needed. Provide 24/7 support without increasing headcount.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Data Processing Agents</h3>
+                    <p class="service-detail-description">Automate document processing, data entry, and report generation. Extract insights from unstructured data and populate your systems automatically.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Analytics & Reporting Agents</h3>
+                    <p class="service-detail-description">AI agents that gather data from multiple sources, analyze patterns, and generate actionable insights. Get real-time dashboards and automated reports.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automation & API Integration -->
+    <section class="services-section" style="background: var(--black);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Project Management</span>
+                <h2 class="section-title">Deliver faster, scale smarter</h2>
+                <p class="section-subtitle">Automate fulfillment workflows so your team focuses on high-value work instead of admin tasks.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-detail-title">Automated Fulfillment</h3>
+                    <p class="service-detail-description">Automatic task creation, deadline tracking, resource allocation, and status updates. Your projects move forward without constant manual oversight.</p>
+                </div>
+
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-detail-title">Onboarding Automation</h3>
+                    <p class="service-detail-description">Client intake forms, automated welcome sequences, resource provisioning, and kickoff scheduling. First impressions on autopilot.</p>
+                </div>
+
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-detail-title">PM Workflows</h3>
+                    <p class="service-detail-description">Automated status updates, bottleneck detection, intelligent reporting, and Slack/email notifications. Know what's happening without chasing updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Consultation -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">AI Consultation</span>
+                <h2 class="section-title">Strategic guidance for AI implementation</h2>
+                <p class="section-subtitle">Expert advice on identifying the best AI opportunities for your business and creating a roadmap for adoption.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">AI Strategy Sessions</h3>
+                    <p class="service-detail-description">2-hour deep dive workshops to identify high-impact AI use cases, assess your current tech stack, and create a prioritized implementation roadmap.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Process Analysis</h3>
+                    <p class="service-detail-description">We map your current workflows, identify bottlenecks, and quantify the ROI potential of automating key processes.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Vendor Selection</h3>
+                    <p class="service-detail-description">Get unbiased recommendations on AI tools and platforms that fit your needs and budget. We compare options so you don't have to.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Audit -->
+    <section class="services-section" style="background: var(--black);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Sales Administration</span>
+                <h2 class="section-title">Close more deals, faster</h2>
+                <p class="section-subtitle">Custom CRMs, AI-generated sales assets, and intelligent nurture campaigns that keep prospects engaged.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-detail-title">Custom CRMs</h3>
+                    <p class="service-detail-description">Tailored pipeline management, deal tracking, revenue forecasting, and automatic data enrichment. Built to match your exact sales process-not the other way around.</p>
+                </div>
+
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-detail-title">AI Asset Generators</h3>
+                    <p class="service-detail-description">Automatic proposal generation, SOWs, contract drafting, and personalized pitch decks. Get professional sales materials in minutes, not hours.</p>
+                </div>
+
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-detail-title">Nurture Systems</h3>
+                    <p class="service-detail-description">Intelligent follow-up sequences, engagement scoring, re-engagement campaigns, and drip content. Stay top-of-mind without spamming your list.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Automation -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Workflow Automation</span>
+                <h2 class="section-title">Streamline your operations</h2>
+                <p class="section-subtitle">Transform manual processes into automated workflows that save time, reduce errors, and scale with your business.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Process Automation</h3>
+                    <p class="service-detail-description">Identify repetitive tasks and build automated workflows that handle them autonomously. From data entry to report generation.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Scheduled Tasks</h3>
+                    <p class="service-detail-description">Set up automated tasks that run on schedule-daily reports, weekly summaries, monthly invoicing, and more.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Team Workflows</h3>
+                    <p class="service-detail-description">Automate team handoffs, approval processes, and notifications. Keep everyone aligned without constant follow-ups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CMS Integration -->
+    <section class="services-section" style="background: var(--black);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">CMS Integration</span>
+                <h2 class="section-title">Supercharge your content management</h2>
+                <p class="section-subtitle">Add AI capabilities to your CMS for smarter content creation, management, and optimization.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">AI Content Writing</h3>
+                    <p class="service-detail-description">Generate blog posts, product descriptions, and marketing copy directly in your CMS. Maintain brand voice with custom AI models.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Media Optimization</h3>
+                    <p class="service-detail-description">Auto-generate image alt text, optimize images for SEO, and create social media variants from your CMS assets.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">SEO Enhancement</h3>
+                    <p class="service-detail-description">Automatically optimize content for search engines-meta descriptions, keywords, internal linking, and readability scores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Literacy Training -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">AI Literacy Training</span>
+                <h2 class="section-title">Empower your team with AI skills</h2>
+                <p class="section-subtitle">Corporate training programs designed to get your team comfortable with AI tools and workflows.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">2-Week Intensive</h3>
+                    <p class="service-detail-description">A focused program covering AI fundamentals, Copilot basics, and practical workplace applications. Perfect for teams new to AI.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">4-Week Program</h3>
+                    <p class="service-detail-description">Comprehensive training covering AI in the workspace, advanced Copilot features, automation tools, and hands-on workshops. Includes certification.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Team Workshops</h3>
+                    <p class="service-detail-description">Custom on-site or virtual workshops tailored to your industry's specific AI needs. Hands-on learning with real work scenarios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OpenClaw Integration -->
+    <section class="services-section" style="background: var(--black);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">OpenClaw Integration</span>
+                <h2 class="section-title">AI-powered Telegram bots for your business</h2>
+                <p class="section-subtitle">We build and integrate custom Telegram bots using OpenClaw-the powerful AI agent framework. Let customers order, inquire, and engage through WhatsApp.</p>
+            </div>
+
+            <div class="services-detail-grid">
+                <div class="service-detail-card reveal reveal-delay-1">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">Custom Bot Development</h3>
+                    <p class="service-detail-description">We create tailored Telegram bots for your specific business needs-from customer support to order management and lead capture.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-2">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">CRM Integration</h3>
+                    <p class="service-detail-description">Connect your bot to Odoo, Salesforce, HubSpot, or any CRM. Automatically sync leads, orders, and customer data.</p>
+                </div>
+                <div class="service-detail-card reveal reveal-delay-3">
+                    <div class="service-detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+                    </div>
+                    <h3 class="service-detail-title">AI-Powered Responses</h3>
+                    <p class="service-detail-description">Integrate LLMs so your bot understands natural language, answers questions intelligently, and handles complex conversations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Who We Serve</span>
+                <h2 class="section-title">Built for fast-moving teams</h2>
+                <p class="section-subtitle">We specialize in serving companies that need to scale operations without scaling headcount.</p>
+            </div>
+
+            <div class="who-grid">
+                <div class="who-card reveal reveal-delay-1">
+                    <h3 class="who-title">Agencies</h3>
+                    <p class="who-description">Scale delivery without hiring. Automate client onboarding, reporting, and fulfillment workflows.</p>
+                </div>
+
+                <div class="who-card reveal reveal-delay-2">
+                    <div class="who-icon">💼</div>
+                    <h3 class="who-title">SaaS Companies</h3>
+                    <p class="who-description">Streamline onboarding, support ticketing, billing, and customer success operations end-to-end.</p>
+                </div>
+
+                <div class="who-card reveal reveal-delay-3">
+                    <div class="who-icon">⚖️</div>
+                    <h3 class="who-title">Professional Services</h3>
+                    <p class="who-description">Automate client operations, document generation, scheduling, and billing for consulting firms.</p>
+                </div>
+
+                <div class="who-card reveal reveal-delay-4">
+                    <div class="who-icon">🛒</div>
+                    <h3 class="who-title">E-Commerce</h3>
+                    <p class="who-description">Intelligent inventory management, fulfillment automation, and customer communication systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="services-section" style="background: var(--black);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Client Success</span>
+                <h2 class="section-title">Real results from real clients</h2>
+                <p class="section-subtitle">See how we've helped businesses like yours achieve measurable growth through automation.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <p class="testimonial-quote">"MoonlightAI Solutions built us an AI lead qualification system that saves our sales team 30+ hours per week. We're closing more deals with fewer people-it's been a game changer."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JS</div>
+                        <div class="testimonial-info">
+                            <h4>Jessica Santos</h4>
+                            <p>Head of Sales, CloudSync SaaS</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stat">312% ROI in first year</div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <p class="testimonial-quote">"Their content automation system produces 500+ posts per month across all our client accounts. What used to take 3 full-time people now runs on autopilot."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-info">
+                            <h4>Marcus Rodriguez</h4>
+                            <p>Founder, Velocity Marketing</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stat">73% reduction in content team costs</div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <p class="testimonial-quote">"We went from stockouts every week to zero in 6 months. Their predictive inventory system is genuinely intelligent-it saved us over $1.2M in the first year."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AL</div>
+                        <div class="testimonial-info">
+                            <h4>Amanda Lee</h4>
+                            <p>COO, Urban Essentials</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stat">$1.2M in cost savings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">How We Work</span>
+                <h2 class="section-title">From discovery to deployment</h2>
+                <p class="section-subtitle">A proven four-step process designed to deliver results-fast.</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="process-number">1</div>
+                    <h3 class="process-title">Discovery Call</h3>
+                    <p class="process-description">Free 30-minute strategy session to map your workflows and calculate ROI.</p>
+                    <p class="process-detail">30 min · 100% free</p>
+                </div>
+
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="process-number">2</div>
+                    <h3 class="process-title">System Design</h3>
+                    <p class="process-description">Detailed blueprint with architecture, integrations, and timeline.</p>
+                    <p class="process-detail">1 week · Fixed pricing</p>
+                </div>
+
+                <div class="process-step reveal reveal-delay-3">
+                    <div class="process-number">3</div>
+                    <h3 class="process-title">Build & Test</h3>
+                    <p class="process-description">Agile development sprints with weekly demos and live testing.</p>
+                    <p class="process-detail">2-6 weeks · Weekly check-ins</p>
+                </div>
+
+                <div class="process-step reveal reveal-delay-4">
+                    <div class="process-number">4</div>
+                    <h3 class="process-title">Launch & Support</h3>
+                    <p class="process-description">Deployment, team training, and 30 days of post-launch support.</p>
+                    <p class="process-detail">Ongoing · Dedicated support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="services-section" id="pricing" style="background: var(--black);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Pricing</span>
+                <h2 class="section-title">Transparent, fixed-rate pricing</h2>
+                <p class="section-subtitle">No hidden fees. No scope creep. Just clear pricing that scales with your business.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card reveal reveal-delay-1">
+                    <h3 class="pricing-name">Starter</h3>
+                    <div class="pricing-amount">$2,500</div>
+                    <p class="pricing-period">One-time</p>
+                    <ul class="pricing-features">
+                        <li>1 automation system</li>
+                        <li>2-3 week delivery</li>
+                        <li>System documentation</li>
+                        <li>Hands-on training</li>
+                        <li>30-day post-launch support</li>
+                        <li>$500/mo retainer option</li>
+                    </ul>
+                    <a href="https://calendly.com/idriwale-moonlightaisolutions/30min" class="pricing-cta" target="_blank" rel="noopener">Get Started</a>
+                </div>
+
+                <div class="pricing-card popular reveal reveal-delay-2">
+                    <h3 class="pricing-name">Growth</h3>
+                    <div class="pricing-amount">$4,500</div>
+                    <p class="pricing-period">One-time</p>
+                    <ul class="pricing-features">
+                        <li>2-3 automation systems</li>
+                        <li>4-6 week delivery</li>
+                        <li>Full tech stack integration</li>
+                        <li>Priority support</li>
+                        <li>60-day post-launch support</li>
+                        <li>$500/mo retainer option</li>
+                    </ul>
+                    <a href="https://calendly.com/idriwale-moonlightaisolutions/30min" class="pricing-cta" target="_blank" rel="noopener">Get Started</a>
+                </div>
+
+                <div class="pricing-card reveal reveal-delay-3">
+                    <h3 class="pricing-name">Enterprise</h3>
+                    <div class="pricing-amount">$9,500</div>
+                    <p class="pricing-period">One-time</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited automation systems</li>
+                        <li>8-12 week delivery</li>
+                        <li>Full tech stack integration</li>
+                        <li>Dedicated support</li>
+                        <li>90-day post-launch support</li>
+                        <li>$500/mo retainer option</li>
+                    </ul>
+                    <a href="https://calendly.com/idriwale-moonlightaisolutions/30min" class="pricing-cta" target="_blank" rel="noopener">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="cta-title">Ready to scale without hiring?</h2>
+                <p class="cta-subtitle">Book a free Growth Mapping Call and discover exactly how AI automation can transform your operations. No commitment, no sales pitch-just actionable insights tailored to your business.</p>
+                <a href="https://calendly.com/idriwale-moonlightaisolutions/30min" class="btn-primary" target="_blank" rel="noopener">
+                    Schedule Your Free Call
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </a>
+                <p class="cta-note">30 minutes · 100% free · Zero obligation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">Left<span>Click</span></div>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://calendly.com/idriwale-moonlightaisolutions/30min" target="_blank" rel="noopener">Book a Call</a></li>
+            </ul>
+            <p class="footer-copyright">&copy; 2025 MoonlightAI Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollReveal();
+            initNavbar();
+            initCounters();
+            initCursorGlow();
+            initScrollProgress();
+        });
+
+        // Scroll Reveal Animation
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // Navbar Scroll Effect
+        function initNavbar() {
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }, { passive: true });
+        }
+
+        // Animated Counters
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        function animateCounter(element) {
+            const target = parseFloat(element.dataset.target);
+            const duration = 2000;
+            const startTime = performance.now();
+            const isDecimal = target % 1 !== 0;
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = target * easeOutQuart;
+
+                if (isDecimal) {
+                    element.textContent = current.toFixed(1);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = isDecimal ? target.toFixed(1) : target;
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Cursor Glow Effect
+        function initCursorGlow() {
+            const glow = document.getElementById('cursorGlow');
+            if (!glow) return;
+
+            let mouseX = 0, mouseY = 0;
+            let glowX = 0, glowY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            }, { passive: true });
+
+            function animateGlow() {
+                glowX += (mouseX - glowX) * 0.1;
+                glowY += (mouseY - glowY) * 0.1;
+
+                glow.style.left = glowX + 'px';
+                glow.style.top = glowY + 'px';
+
+                requestAnimationFrame(animateGlow);
+            }
+
+            animateGlow();
+        }
+
+        // Scroll Progress Indicator
+        function initScrollProgress() {
+            const progress = document.getElementById('scrollProgress');
+
+            window.addEventListener('scroll', () => {
+                const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = (window.pageYOffset / windowHeight);
+                progress.style.transform = `scaleX(${scrolled})`;
+            }, { passive: true });
+        }
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
