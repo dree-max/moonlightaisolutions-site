@@ -1,12 +1,1030 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moonlight AI Solutions</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoonlightAI Solutions | AI Automation Agency</title>
+    <meta name="description" content="We enable entrepreneurs to successfully integrate AI into their business. Process-first AI automation with 80%+ adoption rates in 8-12 weeks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-medium: #111111;
+            --black-soft: #1a1a1a;
+            --accent: #10b981;
+            --accent-bright: #34d399;
+            --accent-dark: #059669;
+            --accent-glow: rgba(16, 185, 129, 0.12);
+            --accent-subtle: rgba(16, 185, 129, 0.06);
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 48px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 64px;
+            }
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--white);
+        }
+
+        .logo:hover {
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 40px;
+            list-style: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--black);
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-bright);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--black-soft);
+            border: 1px solid var(--gray-800);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--gray-400);
+            margin-bottom: 32px;
+        }
+
+        .hero-badge span {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 72px;
+            }
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--gray-400);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: var(--black);
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 32px;
+            border: 1px solid var(--gray-700);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gray-500);
+            background: var(--black-soft);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            padding: 60px 0;
+            border-top: 1px solid var(--gray-800);
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .tech-stack p {
+            text-align: center;
+            font-size: 13px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+        }
+
+        .tech-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 48px;
+            opacity: 0.5;
+        }
+
+        .tech-logos img {
+            height: 32px;
+            width: auto;
+            filter: grayscale(100%) brightness(2);
+        }
+
+        /* Case Studies */
+        .case-studies {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 13px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 56px;
+            }
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .case-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .case-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .case-card {
+            position: relative;
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--black-medium);
+            border: 1px solid var(--gray-800);
+        }
+
+        .case-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .case-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .case-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .case-card:hover .case-overlay {
+            opacity: 1;
+        }
+
+        .case-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .case-stats {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            color: var(--gray-400);
+        }
+
+        .case-stats span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Process */
+        .process {
+            padding: 120px 0;
+            background: var(--black-medium);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .process-card {
+            padding: 32px;
+            background: var(--black);
+            border: 1px solid var(--gray-800);
+            border-radius: var(--radius-lg);
+        }
+
+        .process-number {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--accent);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .process-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .process-card p {
+            color: var(--gray-400);
+            font-size: 15px;
+        }
+
+        /* Services */
+        .services {
+            padding: 120px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            padding: 32px;
+            background: var(--black-medium);
+            border: 1px solid var(--gray-800);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-subtle);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--black-medium) 0%, var(--black) 100%);
+        }
+
+        .cta-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .cta h2 {
+                font-size: 56px;
+            }
+        }
+
+        .cta p {
+            color: var(--gray-400);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-copy {
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--black-medium);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            padding: 32px;
+            background: var(--black);
+            border: 1px solid var(--gray-800);
+            border-radius: var(--radius-lg);
+        }
+
+        .testimonial-quote {
+            font-size: 16px;
+            color: var(--gray-300);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 120px 0;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .why-us-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .why-us-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .why-us-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-subtle);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .why-us-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .why-us-content p {
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">MoonlightAI Solutions</a>
+            <ul class="nav-links">
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="https://calendly.com/idriwale-moonlightaisolutions/30min" target="_blank" class="nav-cta">Book a Call</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span></span>
+                    AI Automation Agency
+                </div>
+                <h1>We enable entrepreneurs to successfully <span>integrate AI</span> into their business.</h1>
+                <p class="hero-subtitle">
+                    Process-first approach with 80%+ team adoption rates in 8-12 weeks.
+                    We build AI solutions that your team actually uses.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        Book a Discovery Call
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#services" class="btn-secondary">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics -->
+    <section class="tech-stack" style="background: var(--black);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; text-align: center;">
+                <div>
+                    <div style="font-size: 48px; font-weight: 800; color: var(--accent); line-height: 1;">80%+</div>
+                    <div style="font-size: 14px; color: var(--gray-400); margin-top: 8px;">Team Adoption Rate</div>
+                </div>
+                <div>
+                    <div style="font-size: 48px; font-weight: 800; color: var(--accent); line-height: 1;">40+</div>
+                    <div style="font-size: 14px; color: var(--gray-400); margin-top: 8px;">Companies Transformed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <div class="container">
+            <p>Powered by</p>
+            <div class="tech-logos">
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">OpenAI</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">Claude</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">LangChain</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">LangGraph</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">CrewAI</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">n8n</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">Make.com</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">Zapier</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">RetellAI</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">Vapi</span>
+                <span style="font-size: 20px; font-weight: 700; color: var(--gray-400);">ElevenLabs</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies" id="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Case Studies</p>
+                <h2 class="section-title">Some of our work.</h2>
+            </div>
+            <div class="case-grid">
+                <div class="case-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SaaS Company">
+                    <div class="case-overlay">
+                        <h3 class="case-title">SaaS Company</h3>
+                        <div class="case-stats">
+                            <div><span>40hrs</span> saved/week</div>
+                            <div><span>3x</span> lead response</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="E-Commerce">
+                    <div class="case-overlay">
+                        <h3 class="case-title">E-Commerce Brand</h3>
+                        <div class="case-stats">
+                            <div><span>60%</span> cost reduction</div>
+                            <div><span>24/7</span> automated support</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=80" alt="Agency">
+                    <div class="case-overlay">
+                        <h3 class="case-title">Marketing Agency</h3>
+                        <div class="case-stats">
+                            <div><span>80%</span> adoption rate</div>
+                            <div><span>$50k</span> saved/year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">How It Works</p>
+                <h2 class="section-title">Our process.</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">01</div>
+                    <h3>Discovery</h3>
+                    <p>We analyze your current workflows, identify automation opportunities, and define success metrics for your AI implementation.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">02</div>
+                    <h3>Build & Deploy</h3>
+                    <p>We build custom AI solutions tailored to your processes, integrate with your existing tools, and deploy to production.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">03</div>
+                    <h3>Train & Optimize</h3>
+                    <p>We train your team on using the AI systems, ensure 80%+ adoption, and continuously optimize for better results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Why MoonlightAI</p>
+                <h2 class="section-title">Why work with us.</h2>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <div class="why-us-icon">🎯</div>
+                    <div class="why-us-content">
+                        <h3>Process-First Approach</h3>
+                        <p>We focus on your workflows before implementing technology, ensuring solutions that actually fit your business.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">📈</div>
+                    <div class="why-us-content">
+                        <h3>80%+ Adoption Guarantee</h3>
+                        <p>Unlike typical 15-30% adoption rates, we ensure your team actually uses the AI we implement.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">⚡</div>
+                    <div class="why-us-content">
+                        <h3>8-12 Week Implementation</h3>
+                        <p>Fast, efficient delivery without sacrificing quality. See results in as little as 2 months.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">🤝</div>
+                    <div class="why-us-content">
+                        <h3>Ongoing Partnership</h3>
+                        <p>We don't just deliver and leave. We provide continued support and optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Testimonials</p>
+                <h2 class="section-title">What clients say.</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"MoonlightAI transformed how we handle customer support. Response times dropped by 70% and our team focuses on high-value tasks."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JD</div>
+                        <div>
+                            <div class="testimonial-name">John D.</div>
+                            <div class="testimonial-role">CEO, Tech Startup</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The process-first approach really works. Our team actually adopted the AI tools - unlike previous attempts that just collecting dust."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <div class="testimonial-name">Sarah M.</div>
+                            <div class="testimonial-role">Operations Director</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"We saved 40+ hours per week through automation. The ROI was evident within the first month. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RK</div>
+                        <div>
+                            <div class="testimonial-name">Robert K.</div>
+                            <div class="testimonial-role">Founder, E-Commerce</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Services</p>
+                <h2 class="section-title">What we do.</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Intelligent Agent Teams</h3>
+                    <p>Custom AI agents that handle repetitive tasks, answer questions, and automate workflows around the clock.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Automation & API Integration</h3>
+                    <p>Connect your systems and automate workflows between apps, eliminating manual data entry and repetitive tasks.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>AI Consultation</h3>
+                    <p>Strategic guidance on AI implementation, helping you identify the best opportunities for automation in your business.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>AI Audit</h3>
+                    <p>Comprehensive review of your current tech stack and processes to identify AI opportunities and gaps.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Workflow Automation</h3>
+                    <p>Streamline your business processes with AI-powered automation that saves time and reduces errors.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠</div>
+                    <h3>CMS Integration</h3>
+                    <p>Add AI capabilities to your content management systems for smarter content creation and management.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📚</div>
+                    <h3>AI Literacy Training</h3>
+                    <p>Corporate AI training programs - 2 to 4 weeks. Learn Copilot, AI in the workspace, and practical AI skills for your team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to transform your business with AI?</h2>
+                <p>Book a free discovery call to discuss how we can help you integrate AI into your operations.</p>
+                <a href="#" class="btn-primary">
+                    Book a Discovery Call
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">MoonlightAI Solutions</div>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <p class="footer-copy">&copy; 2025 MoonlightAI Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
 </html>
